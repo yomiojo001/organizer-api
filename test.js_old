@@ -1,0 +1,157 @@
+require('./src/db/mongoose');
+
+const User = require('./src/models/user');
+
+// User.findByIdAndUpdate('5e9a9c1cd0516e331ccb6577', {age: 1}).then((user)=>{
+//     console.log(user);
+//     return User.countDocuments({age:1})
+// }).then((data)=> {
+//     console.log(data);
+// }).catch((e) => {
+//     console.log(e);
+// })
+
+
+// const updateAgeAndCount = async(id, age) => {
+//     const user = await User.findByIdAndUpdate(id, {age})
+//     const count = await User.countDocuments({age})
+//     return count
+// }
+// updateAgeAndCount('5e9a9c1cd0516e331ccb6577', 3).then((count) => {
+//     console.log(count);
+// }).catch((e) => {
+//     console.log(e);
+// })
+
+
+
+const Task= require('./src/models/task');
+
+const deleteTaskAndCount = async (id, completed) => {
+    const task = await Task.findByIdAndDelete(id)
+    const count = await Task.countDocuments({completed})
+    return count
+}
+deleteTaskAndCount('5e9aa2375aaffb10f0be63d6', false).then((count) => {
+    console.log(count);
+}).catch((e) => {
+    console.log(e);
+})
+
+
+// Task.findByIdAndDelete('5e9937803d07f92e20dbfb1a').then((task) => {
+//     console.log(task);
+//     return Task.countDocuments()
+// }).then((data) => {
+//     console.log(data);
+// }).catch((e) => {
+//     console.log(e);
+// })
+
+
+
+
+
+
+// const mongoose = require('mongoose');
+
+
+// mongoose.connect('mongodb://127.0.0.1:27017', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
+
+// const Task = mongoose.model('Task', {
+//     description: {
+//         type: String
+//     },
+//     completed: {
+//         type: Boolean
+//     }
+// })
+
+// const code = new Task ({
+//     description: 'morning dose of code',
+//     completed: true
+// })
+
+// code.save().then(() => {
+//     console.log(code);
+// }).catch((error) => {
+//     console.log(error);
+    
+// })
+
+
+
+// // const mongodb = require('mongodb');
+// // const MongoClient = mongodb.MongoClient;
+// // const ObjectID = mongodb.ObjectID;
+
+// // const url = "mongodb://127.0.0.1/27017";
+// // const databaseName = 'test-db'
+
+// // MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, (error, client) => {
+// //     if(error){
+// //         console.log ("Unable to establish connection");
+// //     }
+// //     const db = client.db(databaseName);
+
+// //     db.collection('tests').find(
+// //         {
+// //             age: 12
+// //         }
+// //     ).toArray().then((result) => {
+// //         console.log(result);
+// //     }).catch((error) => {
+// //         console.log(error);
+// //     })
+
+// // })
+
+
+// EXPRESS ROUTES
+// User.findOne({_id}).then((user) => {
+    //     if(!user){
+    //         res.status(404).send()
+    //     }
+    //     res.status(200).send(user)
+    // }).catch((e) => {
+    //     res.status(500).send(e)
+    // })
+
+
+    // user.save().then(() => {
+    //     res.status(201).send(user)
+    // }).catch((e) => {
+    //     res.status(500).send(e)
+    // })
+
+
+    
+    // User.find({}).then((users) => {
+    //     res.status(200).send(users)
+    // }).catch((e) => {
+    //     res.status(400).send(e)
+    // })
+
+
+    // Task.find({}).then((tasks) => {
+        //     res.status(200).send(tasks)
+        // }).catch((e) => {
+        //     res.status(500).send(e)
+        // })
+
+        // task.save().then(() => {
+    //     res.status(201).send(task)
+    // }).catch((e) => {
+    //     res.status(400).send(e);
+    // })
+
+    
+
+    // Task.findOne({_id}).then((task) => {
+    //     if(!task){
+    //         return res.status(404).send()
+    //     }
+    //     res.send(task)
+    // }).catch((e) => {
+    //     res.status(500).send(e)
+    // })
